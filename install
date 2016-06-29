@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ ! -f install ]; then
+    echo 'install must be run within its container folder' 1>&2
+    exit 1
+fi
+
+CURDIR=`pwd`
+OLDGOPATH="$GOPATH"
+export GOPATH="$CURDIR/thirdparty"
+
+echo 'install gpcode...'
+go get github.com/nsf/gocode
+echo 'install testify...'
+go get github.com/stretchr/testify
+echo 'install simplejson...'
+go get github.com/bitly/go-simplejson
+echo 'install pg...'
+go get github.com/lib/pq
+echo 'install gorm...'
+go get github.com/jinzhu/gorm
+echo 'install thrift...'
+go get github.com/apache/thrift/lib/go/thrift
+
+echo 'install logrus...'
+go get github.com/Sirupsen/logrus
+echo 'install lfshook...'
+go get github.com/rifflock/lfshook
+
+# echo 'generate thrift...'
+# thrift -r -out "./lib/src" --gen go:thrift_import=github.com/apache/thrift/lib/go/thrift ../etc/thrift/trade.thrift
+# thrift -r -out "../djhaobtc/trader/" --gen py ../etc/thrift/trade.thrift
+
+export GOPATH="$CURDIR:$CURDIR/thirdparty:$CURDIR/lib"
+
+rm -rf lib/pkg
+echo 'install trader...'
+go install trader
+
+# mockery -output="./src/mocks" -name=TradeAPI
+
+gofmt -w src
+
+if [ ! -d log ]; then
+    mkdir log
+fi
+
+export GOPATH="$OLDGOPATH"
+export PATH="$OLDPATH"
+
+echo 'finished'

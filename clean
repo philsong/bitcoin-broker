@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ ! -f clean ]; then
+    echo 'clean must be run within its container folder' 1>&2
+    exit 1
+fi
+
+CURDIR=`pwd`
+OLDGOPATH="$GOPATH"
+export GOPATH="$CURDIR:$CURDIR/thirdparty:$CURDIR/lib"
+
+go clean -i -r trader
+
+rm -rf pid
+rm -rf bin
+rm -rf pkg
+rm -rf log
+rm -rf thirdparty
+rm -rf lib/pkg
+
+
+export GOPATH="$OLDGOPATH"
+export PATH="$OLDPATH"
+
+echo 'finished'
