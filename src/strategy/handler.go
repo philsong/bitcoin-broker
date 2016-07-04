@@ -70,12 +70,12 @@ func handleTrade(trade *trade_service.Trade, tradeType trade_service.TradeType) 
 		return
 	}
 
-	if !check_price_limit(siteOrder) {
-		tradeResult_ = trade_service.NewTradeException()
-		tradeResult_.Reason = trade_service.EX_PRICE_OUT_OF_SCOPE
-		logger.Infoln(siteOrder, tradeResult_)
-		return
-	}
+	// if !check_price_limit(siteOrder) {
+	// 	tradeResult_ = trade_service.NewTradeException()
+	// 	tradeResult_.Reason = trade_service.EX_PRICE_OUT_OF_SCOPE
+	// 	logger.Infoln(siteOrder, tradeResult_)
+	// 	return
+	// }
 
 	err := PushOrder(siteOrder, tradeOrders)
 	if err != nil {
@@ -89,21 +89,21 @@ func handleTrade(trade *trade_service.Trade, tradeType trade_service.TradeType) 
 }
 
 func Buy(buyOrder *trade_service.Trade) *trade_service.TradeException {
-	tradeResult_, exist := check_client_order(buyOrder)
-	if tradeResult_ != nil {
-		return tradeResult_
-	}
+	// tradeResult_, exist := check_client_order(buyOrder)
+	// if tradeResult_ != nil {
+	// 	return tradeResult_
+	// }
 
-	if exist {
-		return nil
-	}
+	// if exist {
+	// 	return nil
+	// }
 
-	if !Check_ticker_limit(buyOrder.Price, trade_service.TradeType_BUY) {
-		tradeResult_ := trade_service.NewTradeException()
-		tradeResult_.Reason = trade_service.EX_PRICE_NOT_SYNC
-		logger.Infoln(buyOrder, tradeResult_)
-		return tradeResult_
-	}
+	// if !Check_ticker_limit(buyOrder.Price, trade_service.TradeType_BUY) {
+	// 	tradeResult_ := trade_service.NewTradeException()
+	// 	tradeResult_.Reason = trade_service.EX_PRICE_NOT_SYNC
+	// 	logger.Infoln(buyOrder, tradeResult_)
+	// 	return tradeResult_
+	// }
 
 	ret := is_limit_buy(buyOrder.Amount)
 	if ret {
@@ -113,7 +113,7 @@ func Buy(buyOrder *trade_service.Trade) *trade_service.TradeException {
 		return tradeResult_
 	}
 
-	tradeResult_ = handleTrade(buyOrder, trade_service.TradeType_BUY)
+	tradeResult_ := handleTrade(buyOrder, trade_service.TradeType_BUY)
 	if tradeResult_ != nil {
 		decr_buy(buyOrder.Amount)
 	}
@@ -122,21 +122,21 @@ func Buy(buyOrder *trade_service.Trade) *trade_service.TradeException {
 }
 
 func Sell(sellOrder *trade_service.Trade) *trade_service.TradeException {
-	tradeResult_, exist := check_client_order(sellOrder)
-	if tradeResult_ != nil {
-		return tradeResult_
-	}
+	// tradeResult_, exist := check_client_order(sellOrder)
+	// if tradeResult_ != nil {
+	// 	return tradeResult_
+	// }
 
-	if exist {
-		return nil
-	}
+	// if exist {
+	// 	return nil
+	// }
 
-	if !Check_ticker_limit(sellOrder.Price, trade_service.TradeType_SELL) {
-		tradeResult_ := trade_service.NewTradeException()
-		tradeResult_.Reason = trade_service.EX_PRICE_NOT_SYNC
-		logger.Infoln(sellOrder, tradeResult_)
-		return tradeResult_
-	}
+	// if !Check_ticker_limit(sellOrder.Price, trade_service.TradeType_SELL) {
+	// 	tradeResult_ := trade_service.NewTradeException()
+	// 	tradeResult_.Reason = trade_service.EX_PRICE_NOT_SYNC
+	// 	logger.Infoln(sellOrder, tradeResult_)
+	// 	return tradeResult_
+	// }
 
 	ret := is_limit_sell(sellOrder.Amount)
 	if ret {
@@ -146,7 +146,7 @@ func Sell(sellOrder *trade_service.Trade) *trade_service.TradeException {
 		return tradeResult_
 	}
 
-	tradeResult_ = handleTrade(sellOrder, trade_service.TradeType_SELL)
+	tradeResult_ := handleTrade(sellOrder, trade_service.TradeType_SELL)
 	if tradeResult_ != nil {
 		decr_sell(sellOrder.Amount)
 	}

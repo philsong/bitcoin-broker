@@ -26,9 +26,9 @@
     "symbol": "btc_cny",
     "sqlconn" : "postgres://root:root@localhost/trader?sslmode=disable",
     "thriftserver": "127.0.0.1:19090",
-    "unit_min_amount" : "0.01",
+    "unit_min_amount" : "1",
     "unit_max_amount" : "3",
-    "buy_queue_amount" : "500000",
+    "buy_queue_amount" : "200",
     "sell_queue_amount" : "200",
     "price_threshold":"3",
     "ticker_compare_count": "3"

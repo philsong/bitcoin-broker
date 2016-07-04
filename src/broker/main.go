@@ -35,6 +35,6 @@ func main() {
 func printBanner() {
 	version := "V1.1 postgres"
 	logger.Infoln("[ ---------------------------------------------------------->>> ")
-	logger.Infoln(" trading API Engine", version)
+	logger.Infoln(" trading broker Engine", version)
 	logger.Infoln(" <<<----------------------------------------------------------] ")
 }

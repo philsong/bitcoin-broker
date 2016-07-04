@@ -149,71 +149,41 @@ func PrintDepthList(depthList *list.List, markets []string) {
 	logger.Infoln("depthCount:", depthCount)
 }
 
-func analyzeAskDepth(ncny float64, markets []string) (tradeOrders map[string]*trade_service.TradeOrder, err error) {
-	depthList, _, newMarkets, err := GetMergeDepth(markets)
-	if err != nil {
-		logger.Errorln(err)
-		return
-	}
-
-	PrintDepthList(depthList, newMarkets)
-
-	sum_cny := 0.0
+func analyzeDepth(nbtc float64, depthList *list.List, markets []string) (tradeOrders map[string]*trade_service.TradeOrder) {
+	sum_btc := 0.0
 
 	tradeOrders = make(map[string]*trade_service.TradeOrder)
 	for e := depthList.Front(); e != nil; e = e.Next() {
 		sumExchangeOrder := e.Value.(*SumExchangeOrder)
-		ask_price := sumExchangeOrder.Price
-		ask_vol := sumExchangeOrder.Amount
+		price := sumExchangeOrder.Price
+		// amount := sumExchangeOrder.Amount
 
-		if sum_cny+ask_price*ask_vol > ncny {
-			for i := 0; i < len(newMarkets); i++ {
-				exchange := newMarkets[i]
-				logger.Debugln(i, exchange)
+		for i := 0; i < len(markets); i++ {
+			exchange := markets[i]
+			//logger.Infoln(i, exchange)
 
-				if sumExchangeOrder.ExchangeOrder[exchange] == nil {
-					continue
-				}
-
-				if tradeOrders[exchange] == nil {
-					tradeOrders[exchange] = new(trade_service.TradeOrder)
-				}
-
-				sub_vol := sumExchangeOrder.ExchangeOrder[exchange].Amount
-				if sum_cny+ask_price*sub_vol > ncny {
-					left_vol := (ncny - sum_cny) / ask_price
-
-					tradeOrders[exchange].EstimateBtc += left_vol
-					tradeOrders[exchange].EstimatePrice = ask_price
-					tradeOrders[exchange].EstimateCny += left_vol * ask_price
-					sum_cny += left_vol * ask_price
-					break
-				} else {
-					tradeOrders[exchange].EstimateBtc += sub_vol
-					tradeOrders[exchange].EstimatePrice = ask_price
-					tradeOrders[exchange].EstimateCny += sub_vol * ask_price
-					sum_cny += sub_vol * ask_price
-				}
+			if sumExchangeOrder.ExchangeOrder[exchange] == nil {
+				continue
 			}
 
-			break
-		} else { //<=
-			for i := 0; i < len(newMarkets); i++ {
-				exchange := newMarkets[i]
+			if tradeOrders[exchange] == nil {
+				tradeOrders[exchange] = new(trade_service.TradeOrder)
+			}
 
-				if sumExchangeOrder.ExchangeOrder[exchange] == nil {
-					continue
-				}
+			full_fill := false
+			left_vol := sumExchangeOrder.ExchangeOrder[exchange].Amount
+			if sum_btc+left_vol > nbtc {
+				left_vol = nbtc - sum_btc
+				full_fill = true
+			}
 
-				if tradeOrders[exchange] == nil {
-					tradeOrders[exchange] = new(trade_service.TradeOrder)
-				}
+			tradeOrders[exchange].EstimateBtc += left_vol
+			tradeOrders[exchange].EstimatePrice = price
+			tradeOrders[exchange].EstimateCny += left_vol * price
+			sum_btc += left_vol
 
-				tradeOrders[exchange].EstimateBtc += sumExchangeOrder.ExchangeOrder[exchange].Amount
-				tradeOrders[exchange].EstimatePrice = ask_price
-				tradeOrders[exchange].EstimateCny += sumExchangeOrder.ExchangeOrder[exchange].Amount * ask_price
-
-				sum_cny += sumExchangeOrder.ExchangeOrder[exchange].Amount * ask_price
+			if full_fill {
+				return
 			}
 		}
 	}
@@ -221,74 +191,30 @@ func analyzeAskDepth(ncny float64, markets []string) (tradeOrders map[string]*tr
 	return
 }
 
-func analyzeBidDepth(nbtc float64, markets []string) (tradeOrders map[string]*trade_service.TradeOrder, err error) {
-	_, depthList, newMarkets, err := GetMergeDepth(markets)
+func analyzeAskDepth(nbtc float64, markets []string) (tradeOrders map[string]*trade_service.TradeOrder, err error) {
+	asks, _, newMarkets, err := GetMergeDepth(markets)
 	if err != nil {
 		logger.Errorln(err)
 		return
 	}
 
-	PrintDepthList(depthList, newMarkets)
+	PrintDepthList(asks, newMarkets)
 
-	sum_btc := 0.0
+	tradeOrders = analyzeDepth(nbtc, asks, newMarkets)
 
-	tradeOrders = make(map[string]*trade_service.TradeOrder)
-	for e := depthList.Front(); e != nil; e = e.Next() {
-		sumExchangeOrder := e.Value.(*SumExchangeOrder)
-		bid_price := sumExchangeOrder.Price
-		bid_vol := sumExchangeOrder.Amount
+	return
+}
 
-		if sum_btc+bid_vol > nbtc {
-			for i := 0; i < len(newMarkets); i++ {
-				exchange := newMarkets[i]
-				//logger.Infoln(i, exchange)
-
-				if sumExchangeOrder.ExchangeOrder[exchange] == nil {
-					continue
-				}
-
-				if tradeOrders[exchange] == nil {
-					tradeOrders[exchange] = new(trade_service.TradeOrder)
-				}
-
-				sub_vol := sumExchangeOrder.ExchangeOrder[exchange].Amount
-				if sum_btc+sub_vol > nbtc {
-					left_vol := (nbtc - sum_btc)
-
-					tradeOrders[exchange].EstimateBtc += left_vol
-					tradeOrders[exchange].EstimatePrice = bid_price
-					tradeOrders[exchange].EstimateCny += left_vol * bid_price
-					sum_btc += left_vol
-					break
-				} else {
-					tradeOrders[exchange].EstimateBtc += sub_vol
-					tradeOrders[exchange].EstimatePrice = bid_price
-					tradeOrders[exchange].EstimateCny += sub_vol * bid_price
-					sum_btc += sub_vol
-				}
-			}
-
-			break
-		} else { //<=
-			for i := 0; i < len(newMarkets); i++ {
-				exchange := newMarkets[i]
-
-				if sumExchangeOrder.ExchangeOrder[exchange] == nil {
-					continue
-				}
-
-				if tradeOrders[exchange] == nil {
-					tradeOrders[exchange] = new(trade_service.TradeOrder)
-				}
-
-				tradeOrders[exchange].EstimateBtc += sumExchangeOrder.ExchangeOrder[exchange].Amount
-				tradeOrders[exchange].EstimatePrice = bid_price
-				tradeOrders[exchange].EstimateCny += sumExchangeOrder.ExchangeOrder[exchange].Amount * bid_price
-
-				sum_btc += sumExchangeOrder.ExchangeOrder[exchange].Amount
-			}
-		}
+func analyzeBidDepth(nbtc float64, markets []string) (tradeOrders map[string]*trade_service.TradeOrder, err error) {
+	_, bids, newMarkets, err := GetMergeDepth(markets)
+	if err != nil {
+		logger.Errorln(err)
+		return
 	}
+
+	PrintDepthList(bids, newMarkets)
+
+	tradeOrders = analyzeDepth(nbtc, bids, newMarkets)
 
 	return
 }
@@ -385,22 +311,12 @@ func estimateOrder(siteOrder *db.SiteOrder, markets []string) (tradeOrders map[s
 		}
 	}
 
-	if tradeType == trade_service.TradeType_BUY {
-		if estimate_cny+0.01 < amount {
-			tradeResult_ = trade_service.NewTradeException()
-			tradeResult_.Reason = trade_service.EX_DEPTH_INSUFFICIENT
+	if estimate_btc+0.01 < amount {
+		tradeResult_ = trade_service.NewTradeException()
+		tradeResult_.Reason = trade_service.EX_DEPTH_INSUFFICIENT
 
-			logger.Errorln(tradeResult_, estimate_cny, amount)
-			return
-		}
-	} else {
-		if estimate_btc+0.01 < amount {
-			tradeResult_ = trade_service.NewTradeException()
-			tradeResult_.Reason = trade_service.EX_DEPTH_INSUFFICIENT
-
-			logger.Errorln(tradeResult_, estimate_btc, amount)
-			return
-		}
+		logger.Errorln(tradeResult_, estimate_btc, amount)
+		return
 	}
 
 	if estimate_btc > 0.01 {

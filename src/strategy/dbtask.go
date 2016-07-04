@@ -77,14 +77,12 @@ func _queryDepth(exchange string) (err error) {
 
 func QueryTicker() {
 	logger.Debugln("QueryTicker begin")
-	cny_threshold := 100000.0
 	btc_threshold := 30.0
 	amount_config, err := db.GetAmountConfig()
 	if err != nil {
 		logger.Errorln(err)
 		// return
 	} else {
-		cny_threshold = amount_config.MaxCny
 		btc_threshold = amount_config.MaxBtc
 	}
 
@@ -92,7 +90,7 @@ func QueryTicker() {
 	var order db.SiteOrder
 	order.ID = -1
 	{
-		order.Amount = cny_threshold + get_current_buy_total()
+		order.Amount = btc_threshold + get_current_buy_total()
 		order.TradeType = trade_service.TradeType_BUY
 
 		markets := GetUsableExchange(order.TradeType.String(), true)

@@ -1,4 +1,4 @@
-## BTC trading market maker for HaoBTC
+## BTC trading market broker for HaoBTC
 
 # 本地搭建 #
 
@@ -6,19 +6,16 @@
 	
 	http://golang.org/doc/install
 
-2、下载安装依赖库并编译 trader
+2、下载安装依赖库并编译 broker
 
 	./install
 	
-这样便编译好了 trader
-
 3、导入数据库表结构
 
 	导入etc目录下的*.sql文件到PostgresDB
 
-4、运行 trader
+4、运行 broker
 
-	// linux/mac或者Git Bash 下执行
-	./bin/trader
+	./bin/broker
 
-一切顺利的话，trader应该就启动了。
+一切顺利的话，broker应该就启动了。

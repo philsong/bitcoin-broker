@@ -24,7 +24,7 @@ var sell_limit float64
 func initTotalReadyAmount() {
 	_buy_queue_amount, prs := config.Config["buy_queue_amount"]
 	if !prs {
-		_buy_queue_amount = "500000"
+		_buy_queue_amount = "200"
 	}
 
 	_sell_queue_amount, prs := config.Config["sell_queue_amount"]

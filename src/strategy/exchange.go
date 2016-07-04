@@ -54,7 +54,7 @@ func GetUsableExchange(method string, check_fund bool) (markets []string) {
 
 	var accounts []*trade_service.Account
 	for i := 0; i < len(all_accounts); i++ {
-		if !(all_accounts[i].GetPauseTrade()) {
+		if !(all_accounts[i].GetPauseTrade()) && (all_accounts[i].GetExchange()) != "haobtc" {
 			accounts = append(accounts, all_accounts[i])
 		}
 	}
@@ -71,7 +71,7 @@ func GetUsableExchange(method string, check_fund bool) (markets []string) {
 		return
 	}
 
-	cny_threshold := 100000.0
+	cny_threshold := 200000.0
 	btc_threshold := 30.0
 	amount_config, err := db.GetAmountConfig()
 	if err != nil {

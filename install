@@ -30,14 +30,14 @@ echo 'install lfshook...'
 go get github.com/rifflock/lfshook
 
 # echo 'generate thrift...'
-# thrift -r -out "./lib/src" --gen go:thrift_import=github.com/apache/thrift/lib/go/thrift ../etc/thrift/trade.thrift
-# thrift -r -out "../djhaobtc/trader/" --gen py ../etc/thrift/trade.thrift
+# thrift -r -out "./lib/src" --gen go:thrift_import=github.com/apache/thrift/lib/go/thrift ../etc/thrift/broker.thrift
+# thrift -r -out "../djhaobtc/broker/" --gen py ../etc/thrift/broker.thrift
 
 export GOPATH="$CURDIR:$CURDIR/thirdparty:$CURDIR/lib"
 
 rm -rf lib/pkg
-echo 'install trader...'
-go install trader
+echo 'install broker...'
+go install broker
 
 # mockery -output="./src/mocks" -name=TradeAPI
 
