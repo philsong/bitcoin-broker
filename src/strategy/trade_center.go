@@ -62,7 +62,7 @@ func TradeCenter() {
 		tickerFSM[exchange] = 0
 
 		_queryExchangeData(exchange)
-		go TaskTemplateTicker(3, _queryDepth, exchange)
+		go TaskTemplateTicker(2, _queryDepth, exchange)
 		go TaskTemplateTrader(2, ProgressFSM, exchange)
 	}
 
@@ -114,7 +114,7 @@ func worker(mess chan message) {
 		mess <- exit_message
 	}()
 
-	TaskTemplate(5, QueryTicker)
+	TaskTemplate(3, QueryTicker)
 }
 
 func supervisor(mess chan message) {

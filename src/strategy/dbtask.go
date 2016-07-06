@@ -131,8 +131,8 @@ func QueryTicker() {
 	if ticker.Ask < ticker.Bid {
 		logger.Infoln("QueryTicker adjust begin:", ticker.Ask, ticker.Bid)
 		mid_price := (ticker.Ask + ticker.Bid) * 0.5
-		ticker.Ask = mid_price + 0.0005*mid_price
-		ticker.Bid = mid_price - 0.0005*mid_price
+		ticker.Ask = mid_price + 0.01
+		ticker.Bid = mid_price - 0.01
 		logger.Infoln("QueryTicker adjust end:", ticker.Ask, ticker.Bid, mid_price)
 	}
 

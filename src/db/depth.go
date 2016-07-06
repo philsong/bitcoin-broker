@@ -70,6 +70,6 @@ func GetDepth(exchange string) (orderbook common.OrderBook, err error) {
 		return
 	}
 
-	logger.Infoln("GetDepth:", depth.ID, depth.CreatedAt)
+	logger.Debugln("GetDepth:", depth.ID, depth.CreatedAt)
 	return
 }

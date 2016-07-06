@@ -219,7 +219,7 @@ ALTER SEQUENCE exchange_config_id_seq OWNED BY exchange_config.id;
 --
 
 CREATE TABLE site_order (
-    created timestamp without time zone DEFAULT now() NOT NULL,
+    created timestamp with time zone DEFAULT now() NOT NULL,
     id integer NOT NULL,
     client_id character varying(64) NOT NULL,
     trade_type character varying(32) NOT NULL,
@@ -297,7 +297,7 @@ ALTER SEQUENCE ticker_id_seq OWNED BY ticker.id;
 --
 
 CREATE TABLE trade_order (
-    created timestamp without time zone DEFAULT now() NOT NULL,
+    created timestamp with time zone DEFAULT now() NOT NULL,
     id integer NOT NULL,
     exchange character varying(64) NOT NULL,
     trade_type character varying(32) NOT NULL,
@@ -316,7 +316,7 @@ CREATE TABLE trade_order (
     memo text NOT NULL,
     price numeric(65,2) NOT NULL,
     try_times integer NOT NULL,
-    update_at timestamp without time zone NOT NULL
+    update_at timestamp with time zone NOT NULL
 );
 
 
