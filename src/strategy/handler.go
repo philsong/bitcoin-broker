@@ -113,7 +113,7 @@ func Buy(buyOrder *trade_service.Trade) *trade_service.TradeException {
 		return tradeResult_
 	}
 
-	tradeResult_ := handleTrade(buyOrder, trade_service.TradeType_BUY)
+	tradeResult_ = handleTrade(buyOrder, trade_service.TradeType_BUY)
 	if tradeResult_ != nil {
 		decr_buy(buyOrder.Amount)
 	}
@@ -146,7 +146,7 @@ func Sell(sellOrder *trade_service.Trade) *trade_service.TradeException {
 		return tradeResult_
 	}
 
-	tradeResult_ := handleTrade(sellOrder, trade_service.TradeType_SELL)
+	tradeResult_ = handleTrade(sellOrder, trade_service.TradeType_SELL)
 	if tradeResult_ != nil {
 		decr_sell(sellOrder.Amount)
 	}
