@@ -89,14 +89,14 @@ func handleTrade(trade *trade_service.Trade, tradeType trade_service.TradeType) 
 }
 
 func Buy(buyOrder *trade_service.Trade) *trade_service.TradeException {
-	// tradeResult_, exist := check_client_order(buyOrder)
-	// if tradeResult_ != nil {
-	// 	return tradeResult_
-	// }
+	tradeResult_, exist := check_client_order(buyOrder)
+	if tradeResult_ != nil {
+		return tradeResult_
+	}
 
-	// if exist {
-	// 	return nil
-	// }
+	if exist {
+		return nil
+	}
 
 	// if !Check_ticker_limit(buyOrder.Price, trade_service.TradeType_BUY) {
 	// 	tradeResult_ := trade_service.NewTradeException()
@@ -122,14 +122,14 @@ func Buy(buyOrder *trade_service.Trade) *trade_service.TradeException {
 }
 
 func Sell(sellOrder *trade_service.Trade) *trade_service.TradeException {
-	// tradeResult_, exist := check_client_order(sellOrder)
-	// if tradeResult_ != nil {
-	// 	return tradeResult_
-	// }
+	tradeResult_, exist := check_client_order(sellOrder)
+	if tradeResult_ != nil {
+		return tradeResult_
+	}
 
-	// if exist {
-	// 	return nil
-	// }
+	if exist {
+		return nil
+	}
 
 	// if !Check_ticker_limit(sellOrder.Price, trade_service.TradeType_SELL) {
 	// 	tradeResult_ := trade_service.NewTradeException()
