@@ -1,4 +1,13 @@
-## BTC trading market broker for HaoBTC
+## BTC trading market broker
+
+    作为经纪商角色，提供thrift标准服务接口。
+
+    提供合并交易所深度的标准价格模型，
+    大并发订单内部自动撮合冲销，
+    智能自动路由订单并拆大单为小单到不同交易所，
+    失败订单自动重试处理。
+
+    支持haobtc,okcoin,huobi,chbtc等交易所。
 
 # 本地搭建 #
 
@@ -14,7 +23,11 @@
 
 	导入etc目录下的*.sql文件到PostgresDB
 
-4、运行 broker
+4、修改配置
+
+    修改conf/config_sample.json 为 conf/config.json
+
+5、运行 broker
 
 	./bin/broker
 

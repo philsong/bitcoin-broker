@@ -9,7 +9,7 @@ import (
 
 func setup() {
 	config.Env = config.Test
-	config.Root = "/Users/phil/dev/work/haobtc/trader"
+	config.Root = "/Users/phil/dev/work/trader"
 	config.LoadConfig()
 	db.Init_sqlstr("root:root@tcp(127.0.0.1:3306)/trader_test")
 	//strategy.Task()
