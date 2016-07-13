@@ -27,7 +27,7 @@
     "sqlconn" : "postgres://root:root@localhost/broker?sslmode=disable",
     "thriftserver": "127.0.0.1:18030",
     "unit_min_amount" : "0.01",
-    "unit_max_amount" : "3",
+    "unit_max_amount" : "5",
     "buy_queue_amount" : "200",
     "sell_queue_amount" : "200",
     "price_threshold":"3",

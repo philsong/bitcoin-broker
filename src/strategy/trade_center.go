@@ -13,6 +13,7 @@ import (
 )
 
 const use_time_weighted_algorithm = true
+const enable_match = false
 
 var unit_min_amount, unit_max_amount float64
 var tickerFSM map[string]int
@@ -77,7 +78,9 @@ func TradeCenter() {
 func ProcessDispathMatch() {
 	db.TXWrapper(ProcessTimeWeighted)
 
-	db.TXWrapper(ProcessMatchTx)
+	if enable_match {
+		db.TXWrapper(ProcessMatchTx)
+	}
 }
 
 func ProgressFSM(exchange string) (err error) {
