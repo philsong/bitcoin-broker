@@ -58,7 +58,7 @@ func get_current_sell_total() float64 {
 	sell_queue_mutex.Lock()
 	defer sell_queue_mutex.Unlock()
 
-	if buy_total_amount < 0 {
+	if sell_total_amount < 0 {
 		logger.Errorln("sell_total_amount:", sell_total_amount)
 		sell_total_amount = 0
 	}
