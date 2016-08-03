@@ -8,6 +8,7 @@ import (
 	"config"
 	"db"
 	"logger"
+	"sync"
 	"time"
 	"util"
 )
@@ -17,6 +18,7 @@ const enable_match = false
 
 var unit_min_amount, unit_max_amount float64
 var tickerFSM map[string]int
+var tickerFSM_mutex = &sync.Mutex{}
 
 func init() {
 	tickerFSM = make(map[string]int)
@@ -84,10 +86,15 @@ func ProcessDispathMatch() {
 }
 
 func ProgressFSM(exchange string) (err error) {
+	tickerFSM_mutex.Lock()
 	tickerFSM[exchange]++
+	tickerFSM_mutex.Unlock()
+
 	if tickerFSM[exchange] >= 10 {
 		_queryFund(exchange)
+		tickerFSM_mutex.Lock()
 		tickerFSM[exchange] = 0
+		tickerFSM_mutex.Unlock()
 	}
 
 	db.TXWrapperEx(ProcessReady, exchange)
