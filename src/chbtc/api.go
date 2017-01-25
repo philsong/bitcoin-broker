@@ -120,3 +120,13 @@ func (w Chbtc) GetAccount() (account common.Account, err error) {
 
 	return
 }
+
+func (w *Chbtc) Withdraw(amount, fees, receiveAddr, safePwd string) (id string, err error) {
+	tradeAPI := w.tradeAPI
+	return tradeAPI.withdraw(amount, fees, receiveAddr, safePwd)
+}
+
+func (w *Chbtc) CancelWithdraw(downloadId, safePwd string) (err error) {
+	tradeAPI := w.tradeAPI
+	return tradeAPI.cancelWithdraw(downloadId, safePwd)
+}

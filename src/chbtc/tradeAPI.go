@@ -220,3 +220,66 @@ func (w *ChbtcTrade) Cancel_order(cointype string, id string) (err error) {
 		return errors.New("Cancel_order failed")
 	}
 }
+
+func (w *ChbtcTrade) withdraw(amount, fees, receiveAddr, safePwd string) (id string, err error) {
+	method := "withdraw"
+	otherParams := "&currency=btc_cny&fees=" + fees + "&amount=" + amount + "&receiveAddr=" + receiveAddr + "&safePwd=" + safePwd
+
+	req_para := w.createSign(method, otherParams)
+	fmt.Println(req_para)
+	body, err := util.HttpPost(Config["ch_api_url"]+method, req_para)
+	if err != nil {
+		return
+	}
+
+	js, err := NewJson([]byte(body))
+	if err != nil {
+		return
+	}
+	logger.Infoln(js)
+	logger.Errorln(err)
+
+	if jscode, ret := js.CheckGet("code"); ret {
+		code := jscode.MustInt()
+
+		if code == 1000 {
+			return js.Get("id").MustString(), nil
+		} else {
+			logger.Errorln("code=", code)
+			return "", errors.New("withdraw failed")
+		}
+	} else {
+		return "", errors.New("withdraw failed")
+	}
+}
+
+func (w *ChbtcTrade) cancelWithdraw(downloadId, safePwd string) (err error) {
+	method := "cancelWithdraw"
+	otherParams := "&currency=btc_cny&downloadId=" + downloadId + "&safePwd=" + safePwd
+
+	req_para := w.createSign(method, otherParams)
+	fmt.Println(req_para)
+	body, err := util.HttpPost(Config["ch_api_url"]+method, req_para)
+	if err != nil {
+		return
+	}
+
+	js, err := NewJson([]byte(body))
+	if err != nil {
+		return
+	}
+	logger.Infoln(js)
+	logger.Errorln(err)
+	if jscode, ret := js.CheckGet("code"); ret {
+		code := jscode.MustInt()
+
+		if code == 1000 {
+			return nil
+		} else {
+			logger.Errorln("code=", code)
+			return errors.New("cancelWithdraw failed")
+		}
+	} else {
+		return errors.New("cancelWithdraw failed")
+	}
+}
