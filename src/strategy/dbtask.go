@@ -96,18 +96,18 @@ func QueryTicker() {
 		markets := GetUsableExchange(order.TradeType.String(), true)
 		if len(markets) == 0 {
 			logger.Errorln("QueryTicker: no used market, use all:", order.TradeType.String())
-			ticker.Ask = 100000
+			// ticker.Ask = 100000
 
-			// markets = GetUsableExchange(order.TradeType.String(), false)
-		} else {
-			_, err := estimateOrder(&order, markets)
-			if err != nil {
-				logger.Errorln("QueryTicker: estimateOrder:", err)
-				return
-			}
-
-			ticker.Ask = order.EstimatePrice
+			markets = GetUsableExchange(order.TradeType.String(), false)
 		}
+
+		_, err := estimateOrder(&order, markets)
+		if err != nil {
+			logger.Errorln("QueryTicker: estimateOrder:", err)
+			return
+		}
+
+		ticker.Ask = order.EstimatePrice
 	}
 
 	{
@@ -117,17 +117,16 @@ func QueryTicker() {
 		markets := GetUsableExchange(order.TradeType.String(), true)
 		if len(markets) == 0 {
 			logger.Errorln("QueryTicker: no used market, use all", order.TradeType.String())
-			// markets = GetUsableExchange(order.TradeType.String(), false)
-			ticker.Bid = 10
-		} else {
-			_, err := estimateOrder(&order, markets)
-			if err != nil {
-				logger.Errorln(err)
-				return
-			}
-
-			ticker.Bid = order.EstimatePrice
+			markets = GetUsableExchange(order.TradeType.String(), false)
+			// ticker.Bid = 10
 		}
+		_, err := estimateOrder(&order, markets)
+		if err != nil {
+			logger.Errorln(err)
+			return
+		}
+
+		ticker.Bid = order.EstimatePrice
 	}
 
 	logger.Debugln(ticker.Ask, ticker.Bid)
