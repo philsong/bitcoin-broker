@@ -25,7 +25,7 @@ echo 'install thrift...'
 go get github.com/apache/thrift/lib/go/thrift
 
 echo 'install logrus...'
-go get github.com/Sirupsen/logrus
+go get github.com/sirupsen/logrus
 echo 'install lfshook...'
 go get github.com/rifflock/lfshook
 
