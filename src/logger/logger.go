@@ -6,8 +6,8 @@ package logger
 
 import (
 	. "config"
-	"github.com/sirupsen/logrus"
 	"github.com/rifflock/lfshook"
+	"github.com/sirupsen/logrus"
 	// "github.com/zbindenren/logrus_mail"
 	"os"
 	"path/filepath"
