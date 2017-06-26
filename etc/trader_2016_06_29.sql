@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: account; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: account; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE account (
@@ -47,10 +47,10 @@ CREATE TABLE account (
 );
 
 
-ALTER TABLE account OWNER TO phil;
+ALTER TABLE account OWNER TO root;
 
 --
--- Name: account_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: account_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE account_id_seq
@@ -61,17 +61,17 @@ CREATE SEQUENCE account_id_seq
     CACHE 1;
 
 
-ALTER TABLE account_id_seq OWNER TO phil;
+ALTER TABLE account_id_seq OWNER TO root;
 
 --
--- Name: account_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: account_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE account_id_seq OWNED BY account.id;
 
 
 --
--- Name: amount_config; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: amount_config; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE amount_config (
@@ -84,10 +84,10 @@ CREATE TABLE amount_config (
 );
 
 
-ALTER TABLE amount_config OWNER TO phil;
+ALTER TABLE amount_config OWNER TO root;
 
 --
--- Name: amount_config_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: amount_config_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE amount_config_id_seq
@@ -98,17 +98,17 @@ CREATE SEQUENCE amount_config_id_seq
     CACHE 1;
 
 
-ALTER TABLE amount_config_id_seq OWNER TO phil;
+ALTER TABLE amount_config_id_seq OWNER TO root;
 
 --
--- Name: amount_config_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: amount_config_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE amount_config_id_seq OWNED BY amount_config.id;
 
 
 --
--- Name: depth; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: depth; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE depth (
@@ -121,10 +121,10 @@ CREATE TABLE depth (
 );
 
 
-ALTER TABLE depth OWNER TO phil;
+ALTER TABLE depth OWNER TO root;
 
 --
--- Name: depth_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: depth_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE depth_id_seq
@@ -135,17 +135,17 @@ CREATE SEQUENCE depth_id_seq
     CACHE 1;
 
 
-ALTER TABLE depth_id_seq OWNER TO phil;
+ALTER TABLE depth_id_seq OWNER TO root;
 
 --
--- Name: depth_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: depth_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE depth_id_seq OWNED BY depth.id;
 
 
 --
--- Name: django_migrations; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: django_migrations; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE django_migrations (
@@ -156,10 +156,10 @@ CREATE TABLE django_migrations (
 );
 
 
-ALTER TABLE django_migrations OWNER TO phil;
+ALTER TABLE django_migrations OWNER TO root;
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE django_migrations_id_seq
@@ -170,17 +170,17 @@ CREATE SEQUENCE django_migrations_id_seq
     CACHE 1;
 
 
-ALTER TABLE django_migrations_id_seq OWNER TO phil;
+ALTER TABLE django_migrations_id_seq OWNER TO root;
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE django_migrations_id_seq OWNED BY django_migrations.id;
 
 
 --
--- Name: exchange_config; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: exchange_config; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE exchange_config (
@@ -191,10 +191,10 @@ CREATE TABLE exchange_config (
 );
 
 
-ALTER TABLE exchange_config OWNER TO phil;
+ALTER TABLE exchange_config OWNER TO root;
 
 --
--- Name: exchange_config_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: exchange_config_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE exchange_config_id_seq
@@ -205,17 +205,17 @@ CREATE SEQUENCE exchange_config_id_seq
     CACHE 1;
 
 
-ALTER TABLE exchange_config_id_seq OWNER TO phil;
+ALTER TABLE exchange_config_id_seq OWNER TO root;
 
 --
--- Name: exchange_config_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: exchange_config_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE exchange_config_id_seq OWNED BY exchange_config.id;
 
 
 --
--- Name: site_order; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: site_order; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE site_order (
@@ -232,10 +232,10 @@ CREATE TABLE site_order (
 );
 
 
-ALTER TABLE site_order OWNER TO phil;
+ALTER TABLE site_order OWNER TO root;
 
 --
--- Name: site_order_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: site_order_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE site_order_id_seq
@@ -246,17 +246,17 @@ CREATE SEQUENCE site_order_id_seq
     CACHE 1;
 
 
-ALTER TABLE site_order_id_seq OWNER TO phil;
+ALTER TABLE site_order_id_seq OWNER TO root;
 
 --
--- Name: site_order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: site_order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE site_order_id_seq OWNED BY site_order.id;
 
 
 --
--- Name: ticker; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: ticker; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE ticker (
@@ -269,10 +269,10 @@ CREATE TABLE ticker (
 );
 
 
-ALTER TABLE ticker OWNER TO phil;
+ALTER TABLE ticker OWNER TO root;
 
 --
--- Name: ticker_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: ticker_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE ticker_id_seq
@@ -283,17 +283,17 @@ CREATE SEQUENCE ticker_id_seq
     CACHE 1;
 
 
-ALTER TABLE ticker_id_seq OWNER TO phil;
+ALTER TABLE ticker_id_seq OWNER TO root;
 
 --
--- Name: ticker_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: ticker_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE ticker_id_seq OWNED BY ticker.id;
 
 
 --
--- Name: trade_order; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: trade_order; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE trade_order (
@@ -320,10 +320,10 @@ CREATE TABLE trade_order (
 );
 
 
-ALTER TABLE trade_order OWNER TO phil;
+ALTER TABLE trade_order OWNER TO root;
 
 --
--- Name: trade_order_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: trade_order_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE trade_order_id_seq
@@ -334,17 +334,17 @@ CREATE SEQUENCE trade_order_id_seq
     CACHE 1;
 
 
-ALTER TABLE trade_order_id_seq OWNER TO phil;
+ALTER TABLE trade_order_id_seq OWNER TO root;
 
 --
--- Name: trade_order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: trade_order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE trade_order_id_seq OWNED BY trade_order.id;
 
 
 --
--- Name: trader_traderbusevent; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: trader_traderbusevent; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE trader_traderbusevent (
@@ -363,10 +363,10 @@ CREATE TABLE trader_traderbusevent (
 );
 
 
-ALTER TABLE trader_traderbusevent OWNER TO phil;
+ALTER TABLE trader_traderbusevent OWNER TO root;
 
 --
--- Name: trader_traderbusevent_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: trader_traderbusevent_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE trader_traderbusevent_id_seq
@@ -377,17 +377,17 @@ CREATE SEQUENCE trader_traderbusevent_id_seq
     CACHE 1;
 
 
-ALTER TABLE trader_traderbusevent_id_seq OWNER TO phil;
+ALTER TABLE trader_traderbusevent_id_seq OWNER TO root;
 
 --
--- Name: trader_traderbusevent_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: trader_traderbusevent_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE trader_traderbusevent_id_seq OWNED BY trader_traderbusevent.id;
 
 
 --
--- Name: trader_traderbusposition; Type: TABLE; Schema: public; Owner: phil; Tablespace: 
+-- Name: trader_traderbusposition; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE TABLE trader_traderbusposition (
@@ -401,10 +401,10 @@ CREATE TABLE trader_traderbusposition (
 );
 
 
-ALTER TABLE trader_traderbusposition OWNER TO phil;
+ALTER TABLE trader_traderbusposition OWNER TO root;
 
 --
--- Name: trader_traderbusposition_id_seq; Type: SEQUENCE; Schema: public; Owner: phil
+-- Name: trader_traderbusposition_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
 CREATE SEQUENCE trader_traderbusposition_id_seq
@@ -415,87 +415,87 @@ CREATE SEQUENCE trader_traderbusposition_id_seq
     CACHE 1;
 
 
-ALTER TABLE trader_traderbusposition_id_seq OWNER TO phil;
+ALTER TABLE trader_traderbusposition_id_seq OWNER TO root;
 
 --
--- Name: trader_traderbusposition_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: phil
+-- Name: trader_traderbusposition_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
 ALTER SEQUENCE trader_traderbusposition_id_seq OWNED BY trader_traderbusposition.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY account ALTER COLUMN id SET DEFAULT nextval('account_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY amount_config ALTER COLUMN id SET DEFAULT nextval('amount_config_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY depth ALTER COLUMN id SET DEFAULT nextval('depth_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY django_migrations ALTER COLUMN id SET DEFAULT nextval('django_migrations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY exchange_config ALTER COLUMN id SET DEFAULT nextval('exchange_config_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY site_order ALTER COLUMN id SET DEFAULT nextval('site_order_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY ticker ALTER COLUMN id SET DEFAULT nextval('ticker_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY trade_order ALTER COLUMN id SET DEFAULT nextval('trade_order_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY trader_traderbusevent ALTER COLUMN id SET DEFAULT nextval('trader_traderbusevent_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: phil
+-- Name: id; Type: DEFAULT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY trader_traderbusposition ALTER COLUMN id SET DEFAULT nextval('trader_traderbusposition_id_seq'::regclass);
 
 
 --
--- Name: account_exchange_key; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: account_exchange_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY account
@@ -503,7 +503,7 @@ ALTER TABLE ONLY account
 
 
 --
--- Name: account_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: account_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY account
@@ -511,7 +511,7 @@ ALTER TABLE ONLY account
 
 
 --
--- Name: amount_config_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: amount_config_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY amount_config
@@ -519,7 +519,7 @@ ALTER TABLE ONLY amount_config
 
 
 --
--- Name: depth_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: depth_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY depth
@@ -527,7 +527,7 @@ ALTER TABLE ONLY depth
 
 
 --
--- Name: django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY django_migrations
@@ -535,7 +535,7 @@ ALTER TABLE ONLY django_migrations
 
 
 --
--- Name: exchange_config_exchange_key; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: exchange_config_exchange_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY exchange_config
@@ -543,7 +543,7 @@ ALTER TABLE ONLY exchange_config
 
 
 --
--- Name: exchange_config_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: exchange_config_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY exchange_config
@@ -551,7 +551,7 @@ ALTER TABLE ONLY exchange_config
 
 
 --
--- Name: site_order_client_id_key; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: site_order_client_id_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY site_order
@@ -559,7 +559,7 @@ ALTER TABLE ONLY site_order
 
 
 --
--- Name: site_order_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: site_order_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY site_order
@@ -567,7 +567,7 @@ ALTER TABLE ONLY site_order
 
 
 --
--- Name: ticker_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: ticker_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY ticker
@@ -575,7 +575,7 @@ ALTER TABLE ONLY ticker
 
 
 --
--- Name: trade_order_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: trade_order_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY trade_order
@@ -583,7 +583,7 @@ ALTER TABLE ONLY trade_order
 
 
 --
--- Name: trader_traderbusevent_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: trader_traderbusevent_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY trader_traderbusevent
@@ -591,7 +591,7 @@ ALTER TABLE ONLY trader_traderbusevent
 
 
 --
--- Name: trader_traderbusposition_pkey; Type: CONSTRAINT; Schema: public; Owner: phil; Tablespace: 
+-- Name: trader_traderbusposition_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
 ALTER TABLE ONLY trader_traderbusposition
@@ -599,126 +599,126 @@ ALTER TABLE ONLY trader_traderbusposition
 
 
 --
--- Name: account_afd1a1a8; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: account_afd1a1a8; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX account_afd1a1a8 ON account USING btree (updated_at);
 
 
 --
--- Name: account_exchange_cfd744d3_like; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: account_exchange_cfd744d3_like; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX account_exchange_cfd744d3_like ON account USING btree (exchange varchar_pattern_ops);
 
 
 --
--- Name: account_fde81f11; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: account_fde81f11; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX account_fde81f11 ON account USING btree (created_at);
 
 
 --
--- Name: amount_config_afd1a1a8; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: amount_config_afd1a1a8; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX amount_config_afd1a1a8 ON amount_config USING btree (updated_at);
 
 
 --
--- Name: amount_config_fde81f11; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: amount_config_fde81f11; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX amount_config_fde81f11 ON amount_config USING btree (created_at);
 
 
 --
--- Name: depth_afd1a1a8; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: depth_afd1a1a8; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX depth_afd1a1a8 ON depth USING btree (updated_at);
 
 
 --
--- Name: depth_fde81f11; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: depth_fde81f11; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX depth_fde81f11 ON depth USING btree (created_at);
 
 
 --
--- Name: exchange_config_exchange_ff3dc00a_like; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: exchange_config_exchange_ff3dc00a_like; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX exchange_config_exchange_ff3dc00a_like ON exchange_config USING btree (exchange varchar_pattern_ops);
 
 
 --
--- Name: site_order_client_id_80f1b664_like; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: site_order_client_id_80f1b664_like; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX site_order_client_id_80f1b664_like ON site_order USING btree (client_id varchar_pattern_ops);
 
 
 --
--- Name: ticker_created_at_a5a68202_uniq; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: ticker_created_at_a5a68202_uniq; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX ticker_created_at_a5a68202_uniq ON ticker USING btree (created_at);
 
 
 --
--- Name: ticker_updated_at_e72cc59d_uniq; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: ticker_updated_at_e72cc59d_uniq; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX ticker_updated_at_e72cc59d_uniq ON ticker USING btree (updated_at);
 
 
 --
--- Name: trade_order_2637814c; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: trade_order_2637814c; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX trade_order_2637814c ON trade_order USING btree (site_order_id);
 
 
 --
--- Name: trader_traderbusevent_4c53479a; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: trader_traderbusevent_4c53479a; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX trader_traderbusevent_4c53479a ON trader_traderbusevent USING btree (has_pushed);
 
 
 --
--- Name: trader_traderbusevent_afd1a1a8; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: trader_traderbusevent_afd1a1a8; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX trader_traderbusevent_afd1a1a8 ON trader_traderbusevent USING btree (updated_at);
 
 
 --
--- Name: trader_traderbusevent_fde81f11; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: trader_traderbusevent_fde81f11; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX trader_traderbusevent_fde81f11 ON trader_traderbusevent USING btree (created_at);
 
 
 --
--- Name: trader_traderbusposition_afd1a1a8; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: trader_traderbusposition_afd1a1a8; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX trader_traderbusposition_afd1a1a8 ON trader_traderbusposition USING btree (updated_at);
 
 
 --
--- Name: trader_traderbusposition_fde81f11; Type: INDEX; Schema: public; Owner: phil; Tablespace: 
+-- Name: trader_traderbusposition_fde81f11; Type: INDEX; Schema: public; Owner: root; Tablespace: 
 --
 
 CREATE INDEX trader_traderbusposition_fde81f11 ON trader_traderbusposition USING btree (created_at);
 
 
 --
--- Name: trade_order_site_order_id_6f9e5a14_fk_site_order_id; Type: FK CONSTRAINT; Schema: public; Owner: phil
+-- Name: trade_order_site_order_id_6f9e5a14_fk_site_order_id; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY trade_order
@@ -726,12 +726,12 @@ ALTER TABLE ONLY trade_order
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: phil
+-- Name: public; Type: ACL; Schema: -; Owner: root
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM phil;
-GRANT ALL ON SCHEMA public TO phil;
+REVOKE ALL ON SCHEMA public FROM root;
+GRANT ALL ON SCHEMA public TO root;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
